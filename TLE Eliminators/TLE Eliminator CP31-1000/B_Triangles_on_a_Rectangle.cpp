@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+#define int long long
+#define all(x) x.begin(), x.end()
+#define rall(x) x.rbegin(), x.rend()
+#define pb push_back
+#define fast_io ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+using namespace std;
+
+template<typename T>
+void print_1dvector(vector<T>& v) {
+    for(size_t i = 0; i < v.size(); i++) {
+        cout << v[i] << " ";
+    }
+    cout << endl;
+}
+
+template<typename T>
+void take_1d_vector_input(vector<T> &v){
+    for(auto &i : v){
+        cin >> i;
+    }
+}
+
+template<typename T>
+T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
+
+
+void solve(){
+    int w,h;
+    cin >> w >> h;
+    int area = LLONG_MIN;
+    for(int i = 0; i < 4; i++){
+        int k;
+        cin >> k;
+        int first,last;
+        for(int j = 0; j < k; j++){
+            int x; 
+            cin >> x;
+            if(j == 0){
+                first = x;
+            }
+            if(j == k-1){
+                last = x;
+            }
+        }
+        int base = last-first;
+        int height;
+        if(i<=1) height = h;
+        else height = w;
+
+        area = max(area,height*base);
+    }
+
+    cout << area << endl;
+}
+
+signed main(){
+    fast_io;
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+    }
+}
