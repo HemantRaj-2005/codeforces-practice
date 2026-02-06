@@ -23,8 +23,9 @@ void solve(){
     }
     string temp = s;
     s = s+temp;
+    s.pop_back();
 
-    for(int i = 0; i <= 2*n; i++){
+    for(int i = 0; i <= 2*n-1; i++){
         if(s[i] == 'g'){
             Gindex.push_back(i);
         }
