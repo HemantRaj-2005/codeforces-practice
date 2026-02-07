@@ -27,19 +27,11 @@ T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 
 
 void solve(){
-    int n;
-    cin >> n;
-    vector<int> b(n);
-    take_1d_vector_input(b);
-    set<int> s;
-    for(auto i : b){
-        s.insert(i);
-    }
-    if(s.size() < n){
-        cout << "YES" << endl;
-    } else {
-        cout << "NO" << endl;
-    }
+    int x,y,k;
+    cin >> x >> y >> k;
+    int num = k*x + k*y - 1;
+    int trades = (num/(x-1)) + (num%(x-1) != 0);
+    cout << trades << endl;
 }
 
 signed main(){

@@ -29,17 +29,22 @@ T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 void solve(){
     int n;
     cin >> n;
-    vector<int> b(n);
-    take_1d_vector_input(b);
-    set<int> s;
-    for(auto i : b){
-        s.insert(i);
+    string s;
+    cin >> s;
+    int sum = 0, ops = 0;
+    for(int i = 0; i < n; i++){
+        if(s[i] == '('){
+            sum++;
+        } else{
+            sum--;
+        }
+        if(sum < 0){
+            sum = 0;
+            ops++;
+        }
     }
-    if(s.size() < n){
-        cout << "YES" << endl;
-    } else {
-        cout << "NO" << endl;
-    }
+
+    cout << ops << endl;
 }
 
 signed main(){

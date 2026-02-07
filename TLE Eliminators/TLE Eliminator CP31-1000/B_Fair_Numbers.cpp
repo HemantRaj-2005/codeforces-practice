@@ -25,20 +25,27 @@ void take_1d_vector_input(vector<T> &v){
 template<typename T>
 T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 
+bool isDivisible(int num){
+    int temp = num;
+    while(temp > 0){
+        int dig = temp%10;
+        if(dig != 0 && num%dig != 0){
+            return false;
+        }
+        temp = temp/10;
+    }
+
+    return true;
+}
 
 void solve(){
-    int n;
+    int n; 
     cin >> n;
-    vector<int> b(n);
-    take_1d_vector_input(b);
-    set<int> s;
-    for(auto i : b){
-        s.insert(i);
-    }
-    if(s.size() < n){
-        cout << "YES" << endl;
-    } else {
-        cout << "NO" << endl;
+    for(int i = n; i < 2*1e18; i++){
+        if(isDivisible(i)){
+            cout << i << endl;
+            return;
+        }
     }
 }
 

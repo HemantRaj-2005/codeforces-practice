@@ -29,17 +29,16 @@ T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 void solve(){
     int n;
     cin >> n;
-    vector<int> b(n);
-    take_1d_vector_input(b);
-    set<int> s;
-    for(auto i : b){
-        s.insert(i);
+    vector<int> a(n);
+    take_1d_vector_input(a);
+    sort(all(a));
+    int i = 0, j = n-1;
+    while(i < j){
+        cout << a[i] << " " << a[j] << " ";
+        i++;
+        j--;
     }
-    if(s.size() < n){
-        cout << "YES" << endl;
-    } else {
-        cout << "NO" << endl;
-    }
+    cout << endl;
 }
 
 signed main(){
