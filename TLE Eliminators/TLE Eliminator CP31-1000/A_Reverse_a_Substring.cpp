@@ -29,16 +29,26 @@ T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 void solve(){
     int n;
     cin >> n;
-    vector<int> a(n);
-    take_1d_vector_input(a);
-    sort(rall(a));
-    print_1dvector(a);
+    string s;
+    cin >> s;
+    int l=0,r=0;
+    for(int i = 0; i < n-1; i++){
+        if(s[i+1] < s[i]){
+            l = i,r=i+1;
+            break;
+        }
+    }
+    if((l == 0 && r == 0) || n==1){
+        cout << "NO" << endl;
+    } else{
+        cout << "YES" << endl;
+        cout << l+1 << " " << r+1 << endl;
+    }
 }
 
 signed main(){
     fast_io;
-    int t;
-    cin >> t;
+    int t = 1;
     while(t--){
         solve();
     }
