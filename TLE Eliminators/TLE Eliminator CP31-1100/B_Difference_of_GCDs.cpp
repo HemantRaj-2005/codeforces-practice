@@ -31,15 +31,16 @@ void DifferenceOfGCD() {
     vector<int> arr(n,-1);
     
     int i = 1;
-    for(int j = l; j <= r; j++){
-        if(i> n){
+    while(i <= n){
+        int x = ((l+i-1)/i)*i;
+        if(x > r){
             break;
-        }
-        if(j%i == 0){
-            arr[i-1] = j;
+        } else{
+            arr[i-1] = x;
             i++;
         }
     }
+
     for(auto &x : arr){
         if(x == -1){
             cout << "NO" << endl;
