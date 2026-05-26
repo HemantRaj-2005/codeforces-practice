@@ -24,38 +24,39 @@ template <typename T>
 T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 
 
-void KillDemodogs() {
+void EatingCandies() {
     int n;
     cin >> n;
-
-    int a = n;
-    int b = 4LL * n * n + 3LL * n - 1;
-
-    // divide by 2
-    if (a % 2 == 0)
-        a /= 2;
-    else
-        b /= 2;
-
-    // divide by 3
-    if (a % 3 == 0)
-        a /= 3;
-    else
-        b /= 3;
-
-    int ans = (a % MOD) * (b % MOD) % MOD;
-    ans = ans * 2022 % MOD;
-
-    cout << ans << "\n";
+    vector<int> weights(n);
+    takeVectorIn(weights);
+    int l = 0, r = n-1;
+    int alice = 0, bob = 0;
+    int ans = INT_MIN;
+    while(l <= r){
+        if(alice == bob){
+            ans = max(ans, (n-r-1)+l);
+        }
+        if(alice<=bob){
+            alice += weights[l];
+            l++;
+        } else{
+            bob += weights[r];
+            r--;
+        }
+    }
+    if(alice == bob){
+        ans = max(ans, (n-r-1)+l);
+    }
+    cout << ans << endl;
 }
-
 
 
 signed main(){
     fast_io;
     int t;
-	cin >> t;
-    while (t--){
-        KillDemodogs();
+    cin >> t;
+    while (t--)
+    {
+        EatingCandies();
     }
 }

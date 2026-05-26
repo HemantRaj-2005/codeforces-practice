@@ -24,38 +24,38 @@ template <typename T>
 T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 
 
-void KillDemodogs() {
-    int n;
-    cin >> n;
-
-    int a = n;
-    int b = 4LL * n * n + 3LL * n - 1;
-
-    // divide by 2
-    if (a % 2 == 0)
-        a /= 2;
-    else
-        b /= 2;
-
-    // divide by 3
-    if (a % 3 == 0)
-        a /= 3;
-    else
-        b /= 3;
-
-    int ans = (a % MOD) * (b % MOD) % MOD;
-    ans = ans * 2022 % MOD;
-
-    cout << ans << "\n";
+void SubtractOperation() {
+    int n,k;
+    cin >> n >> k;
+    vector<int> arr(n);
+    takeVectorIn(arr);
+    map<int,bool> mpp;
+    bool present = false;
+    for(auto &it : arr){
+        mpp[it] = true;
+    }
+    
+    for(int i = 0; i < n; i++){
+        if(mpp.find(arr[i]-k) != mpp.end()){
+            present = true;
+            break;
+        }
+        mpp[arr[i]] = true;
+    }
+    if(present){
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
+    }
 }
-
 
 
 signed main(){
     fast_io;
     int t;
-	cin >> t;
-    while (t--){
-        KillDemodogs();
+    cin >> t;
+    while (t--)
+    {
+        SubtractOperation();
     }
 }
